@@ -8,15 +8,31 @@ using namespace std;
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<vector<ll>> a;
+int ans = 0;
+ll n, x;
+void dfs(ll pro, ll bag) {
+    if (bag == n) {
+        if (pro == x) ans++;
+        return;
+    }
+    for (ll b : a[bag]) {
+        if (pro > x/b) continue;
+        dfs(pro*b, bag+1);
+    }
+}
 int main() {
-    ll n, x;
     cin >> n >> x;
 
+    a.resize(n);
     vector<ll> l(n);
-    vector<vector<ll>> a(n);
     rep (i, n) {
-        cin >> l[i];
-        rep (j, l[i]) cin >> a[i][j];
+        ll l;
+        cin >> l;
+        a[i].resize(l);
+        rep (j, l) cin >> a[i][j];
     }
+    dfs(1, 0);
+    cout << ans << endl;
     return 0;
 }
