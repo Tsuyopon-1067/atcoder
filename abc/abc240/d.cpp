@@ -5,36 +5,26 @@
 using namespace std;
 
 int main() {
-    int n, k;
+    int n;
     cin >> n;
-    int ren = -1;
-    int count = 0;
-    vector<int> a(n);
-    rep (i, n) {
-        if (i < 0) i = 0;
-        cin >> a[i];
-        count++;
 
-        int mae = i-1;
-        if (mae < 0) {
-            cout << count << endl;
+    stack<pair<int,int>> ball;
+    rep (i, n) {
+        int a;
+        cin >> a;
+        if (ball.size() == 0) {
+            ball.push({a, 1});
+            cout << ball.size() << endl;
             continue;
         }
-
-        if (a[mae] == a[i]) {
-            ren++;
-            k = a[i];
-            if (ren == k) {
-                rep (j, k) a.erase(a.begin() + i - j);
-                count -= k;
-                n -= k;
-                i -= k;
-                ren = 1;
-            }
+        pair<int, int> top = ball.top();
+        pair<int, int> add = {a, 1};
+        if (top.first == a) add.second = top.second + 1;
+        ball.push(add);
+        if (add.second == a) {
+            rep (i, a) ball.pop();
         }
-        else ren = 1;
-        
-        cout << count << endl;
+        cout << ball.size() << endl;
     }
     return 0;
 }
