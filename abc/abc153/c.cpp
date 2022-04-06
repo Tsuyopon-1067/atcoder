@@ -1,33 +1,27 @@
 #define rep(i, n) for (int i = 0; i < (int)(n); ++i)
 #define reps(i, s, n) for (int i = (s); i < (int)(n); ++i)
-<<<<<<< HEAD
 #define rrep(i, n) for (int i = (int)(n-1); i >= 0; --i)
-=======
->>>>>>> f4bfbb3109ae0e50a4d2aaf648b5c07d02bf7d67
+#define MOD 1000000007
+#define INF 2000000000
+#define INFL 1000000000000000000
 template <typename T> bool chmin(T &a, const T& b) { if (a > b) { a = b; return true; } return false; }
 template <typename T> bool chmax(T &a, const T& b) { if (a < b) { a = b; return true; } return false; }
+template <typename T> int count_digit(T n) { int res = 0; while (n > 0) { ++res; n /= 10; } return res; }
 typedef long long ll;
 #include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-<<<<<<< HEAD
+    int n, k;
+    cin >> n >> k;
+    vector<int> h(n);
+    for (auto &x : h) cin >> x;
+    sort(h.begin(), h.end(), greater<int>());
 
-=======
-    for(int i = 0; i < n; ++i) cin >> a[i];
+    rep (i, min(k, n)) h[i] = 0;
 
-    int ans = 0;
-    rep (l, n) {
-        int x = a[l];
-        reps (r, l, n) {
-            chmin(x, a[r]);
-            chmax(ans, x*(r-l+1));
-        }
-    }
+    ll ans = 0;
+    rep (i, n) ans += h[i];
     cout << ans << endl;
->>>>>>> f4bfbb3109ae0e50a4d2aaf648b5c07d02bf7d67
     return 0;
 }
