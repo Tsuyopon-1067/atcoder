@@ -1,0 +1,59 @@
+#define rep(i, n) for (int i = 0; i < (int)(n); ++i)
+#define reps(i, s, n) for (int i = (s); i < (int)(n); ++i)
+#define rrep(i, n) for (int i = (int)(n-1); i >= 0; --i)
+#define MOD 1000000007
+#define INF 2000000000
+#define INFL 1000000000000000000
+template <typename T> bool chmin(T &a, const T& b) { if (a > b) { a = b; return true; } return false; }
+template <typename T> bool chmax(T &a, const T& b) { if (a < b) { a = b; return true; } return false; }
+template <typename T> int count_digit(T n) { int res = 0; while (n > 0) { ++res; n /= 10; } return res; }
+typedef long long ll;
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<ll> a(n);
+    vector<ll> b(n);
+    vector<ll> c(n);
+    for (auto &x : a) cin >> x;
+    for (auto &x : b) cin >> x;
+    for (auto &x : c) cin >> x;
+
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    reverse(c.begin(), c.end());
+
+    ll ans = 0;
+    rep (i, n) {
+        ll ab = a.back();
+        ll bb = b.back();
+        ll cb = c.back();
+        if (ab < 0 || bb < 0) break;
+        ans += ab * bb + cb;
+        //printf("%lld * %lld + %lld = %lld\n", ab, bb, cb, ab*bb + cb);
+        a.pop_back();
+        b.pop_back();
+        c.pop_back();
+    }
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    ll anst = ans;
+    rep (i, n) {
+        ll ab = a.back();
+        ll bb = b.back();
+        ll cb = c.back();
+        if (a.size() == 0) break;
+        //else if (ab*bb + cb < 0) break;
+        anst += ab * bb + cb;
+        chmax(ans, anst)
+        //printf("%lld * %lld + %lld = %lld\n", ab, bb, cb, ab*bb + cb);
+        a.pop_back();
+        b.pop_back();
+        c.pop_back();
+    }
+    cout << ans << endl;
+    return 0;
+}
