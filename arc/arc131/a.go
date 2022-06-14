@@ -5,8 +5,10 @@ import (
 )
 
 func main() {
-    var a, b int64
+    var a, b int
     fmt.Scanf("%d", &a)
     fmt.Scanf("%d", &b)
-    fmt.Println(a + 500000000*b)
+
+    bb := b*5
+    fmt.Printf("%d%d\n", bb, a)
 }
