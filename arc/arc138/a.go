@@ -15,8 +15,7 @@ var rdr *bufio.Reader
 func chmin(a *int, b int) (res bool) { if res = *a > b; res { *a = b }; return }
 func chmax(a *int, b int) (res bool) { if res = *a < b; res { *a = b }; return }
 func abs(x int) int { if x >= 0 { return x } else { return -x } }
-func lower_bound(a []int, x int) int { n := len(a); l, r := 0, n-1; if x < a[0] { return -1 }; if a[n-1] < x { return n }; for l <= r { m := l + (r-l)/2; if a[m] < x { l = m+1 } else { r = m-1 } }; return l }
-func upper_bound(a []int, x int) int { n := len(a); l, r := 0, n-1; if x < a[0] { return -1 }; if a[n-1] < x { return n }; for l <= r { m := l + (r-l)/2; if a[m] <= x { l = m+1 } else { r = m-1 } }; return l }
+func upper_bound(a []int, x int) int { n := len(a); l, r := 0, n-1; if a[n-1] < x { return n }; for l <= r { m := l + (r-l)/2; if a[m] <= x { l = m+1 } else { r = m-1 } }; return l }
 func readline() string { buf := make([]byte, 0, 16); for { l, p, e := rdr.ReadLine(); if e != nil { fmt.Println(e.Error()); panic(e) }; buf = append(buf, l...); if !p { break } }; return string(buf) }
 func readIntSlice() []int { slice := make([]int, 0); lines := strings.Split(readline(), " "); for _, v := range lines { slice = append(slice, s2i(v)) }; return slice; }
 func s2i(s string) int { v, ok := strconv.Atoi(s); if ok != nil { panic("Faild : " + s + " can't convert to int") }; return v }
@@ -56,7 +55,11 @@ func main() {
     ans := INFL
     for i := 0; i < k; i++ {
         j := upper_bound(lmx, a[i])
-        chmin(&ans, k + abs(j - i))
+        if j < 0 || len(lmx) <= j {
+            continue
+        }
+        chmin(&ans, k+j - i)
     }
     fmt.Println(ans)
 }
+func nextPermutation(x sort.Interface) bool { n := x.Len() - 1; if n < 1 { return false }; j := n - 1; for ; !x.Less(j, j+1); j-- { if j == 0 { return false } }; l := n; for !x.Less(j, l) { l-- }; x.Swap(j, l); for k, l := j+1, n; k < l; { x.Swap(k, l); k++; l--; }; return true }
