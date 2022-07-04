@@ -1,13 +1,13 @@
 .element {
     display: flex;
     flex-direction: column;
-    margin: 0.5cm 0.5cm;
-    border: solid;
-    border-radius: 8px;
-    border: 2px solid;
+    margin: 0.3cm 0.5cm;
+    border-radius: 3px;
     padding: 5px;
     border-color: #555555;
     font-family:'Zen Kaku Gothic New',sans-serif;
+    background-color: #ffffff;
+    filter: drop-shadow(4px 4px 4px #00000088);
 }
 .element a {
     text-decoration: none;
@@ -52,5 +52,5 @@
     padding: 0.3cm;
     margin: 1.2cm 0.5cm 0 0.5cm;
     border-radius: 8px;
-    background-color: rgb(25, 52, 92);
+    background-color: #18345d
 }
