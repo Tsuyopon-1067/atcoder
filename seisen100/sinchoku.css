@@ -1,0 +1,56 @@
+.element {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5cm 0.5cm;
+    border: solid;
+    border-radius: 8px;
+    border: 2px solid;
+    padding: 5px;
+    border-color: #555555;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+}
+.element a {
+    text-decoration: none;
+    color: black;
+}
+.element .info {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+.element .info .no {
+    margin: 0 0.5cm 0 0.2cm;
+}
+.element .info .title {
+    margin: auto 0 auto 0;
+}
+.element .done {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    color: #666666;
+}
+.element .done .num {
+    margin: 0 0.2cm 0 0.3cm;
+}
+.element .done .date{
+    width: 1cm;
+    margin: 0;
+}
+.section {
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 0.3cm;
+    margin: 1.2cm 0.5cm 0 0.5cm;
+    border-radius: 8px;
+    background-color: rgb(25, 52, 92);
+}
