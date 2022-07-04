@@ -54,3 +54,12 @@
     border-radius: 8px;
     background-color: #18345d
 }
+
+
+.bigTitle a {
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
