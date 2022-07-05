@@ -1,47 +1,32 @@
+#define rep(i, n) for (long long i = 0; i < (long long)(n); ++i)
+#define reps(i, s, n) for (long long i = (long long)(s); i < (long long)(n); ++i)
+typedef long long ll;
 #include <bits/stdc++.h>
 using namespace std;
-#define _GLIBCXX_DEBUG
-#define rep(i, n) for (int i = 0; i < (int)(n); i++)
-
-struct pref{
-	int n = 0;
-	int p = 0;
-	int y = 0;
-	int num = 0;
-};
-
 int main() {
-	int n, m;
-	cin >> n >> m;
-	vector<struct pref> p(m);
-	rep(i, m){
-		cin >> p[i].p >> p[i].y;
-		p[i].n = i;
-	}
+    long long n, m;
+    cin >> n >> m;
+    vector<ll> p(m);
+    vector<ll> y(m);
+    vector<vector<pair<ll, ll>>> citie(n+1); // year code
+    vector<pair<ll, ll>> ans(m);
 
-	rep(i, m){
-		int minIdx = i;
-		for(int j = i + 1; j < m; j++){
-			if(p[minIdx].y > p[j].y) minIdx = j;
-		}
-		swap(p[i], p[minIdx]);
-	}
-
-	vector<int> count(n, 0);
-	rep(i, m){
-		count[p[i].p -1]++;
-		p[i].num = count[p[i].p -1];
-	}
-	
-	rep(i, m){
-		int minIdx = i;
-		for(int j = i + 1; j < m; j++){
-			if(p[minIdx].n > p[j].n) minIdx = j;
-		}
-		swap(p[i], p[minIdx]);
-	}
-	
-	rep(i, m) printf("%06d%06d\n", p[i].p, p[i].num);
-
-	return 0;
+    rep (i, m) {
+        cin >> p[i] >> y[i];
+        citie[p[i]].push_back({y[i], i});
+    }
+    reps (i, 1, n+1) {
+        if (citie[i].size() == 0) continue;
+        sort(citie[i].begin(), citie[i].end());
+        ll nn = (ll)citie[i].size();
+        rep (j, nn) {
+            ll idx = citie[i][j].second;
+            ans[idx].first = i;
+            ans[idx].second = j+1;
+        }
+    }
+    rep (i, m) {
+        printf("%06lld%06lld\n", ans[i].first, ans[i].second);
+    }
+    return 0;
 }
