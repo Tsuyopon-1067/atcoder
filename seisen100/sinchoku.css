@@ -48,7 +48,8 @@
     margin: 1.2cm 0.5cm 0 0.5cm;
     padding: 0;
     border-radius: 30px;
-    background-color: #18345d
+    background-color: #18345d;
+    filter: drop-shadow(4px 4px 4px #00000066);
 }
 .section h2 {
     font-family:'Zen Kaku Gothic New',sans-serif;
