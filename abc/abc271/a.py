@@ -1,2 +1,2 @@
-n = int(input())
-print(format(n, '02X'))
+a, b = map(int, input().split())
+print(f'{b/a:.03f}')
